@@ -1,0 +1,142 @@
+@import './global/config';
+@import './global/mixins';
+@import './global/easing';
+@import './global/grid';
+@import './global/typography';
+
+@include font-face('Gotham', $font-path + '/Gotham_500', 500); // medium
+@include font-face('Gotham', $font-path + '/Gotham_700', 700); // bold
+
+@import './global/reset';
+@import './global/layout';
+
+.cube {
+  height: 54px;
+  position: relative;
+  margin: 5px 0;
+  perspective: 1000px;
+  &s {
+    max-width: 715px;
+    margin: auto;
+  }
+  > div {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+    transform: translateZ( -100px );
+    &.show-bottom {
+      transform: translateZ( -100px ) rotateX( 90deg );
+    }
+    > div {
+      backface-visibility: hidden;
+      position: absolute;
+      height: 100%;
+      border: 1px solid #111;
+      line-height: 54px;
+      font-size: 42px;
+      font-family: Gotham;
+      font-weight: 500;
+      text-align: center;
+    }
+    .top {
+      transform: translateZ( 27px );
+      background: #fff;
+      color: #111;
+    }
+    .bottom {
+      transform: rotateX( -90deg ) translateZ( 27px );
+      background: #111;
+      color: #fff;
+    }
+  }
+  &--one {
+    width: 688px;
+    > div {
+      > div {
+        width: 100%;
+      }
+    }
+  }
+  &--two {
+    width: 699px;
+    > div {
+      > div {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.type {
+  height: 100vh;
+  .section--wrapper {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__headline {
+    font-size: 42px;
+    line-height: 42px;
+    max-width: 715px;
+    margin: auto;
+    @extend %GothamMedium;
+
+    &--mask {
+      .line-wrapper {
+        color: $cod-gray;
+        display: inline-block;
+        background-color: $cod-gray;
+        .line {
+          padding: 5px 15px;
+        }
+      }
+    }
+
+    &--line {
+      .line-wrapper {
+        color: $cod-gray;
+        margin: 5px 0;
+        display: inline-block;
+        border-bottom: 1px solid $cod-gray;
+        .line {
+          padding: 5px 15px;
+        }
+      }
+    }
+
+    &--block {
+      .block-wrapper {
+        position: relative;
+        perspective: 1000px;
+        .line-wrapper {
+          color: $cod-gray;
+          margin: 5px 0;
+          width: 100%;
+          height: 100%;
+          transform-style: preserve-3d;
+          transition: transform 1s;
+          transform: translateZ(-100px);
+          overflow: visible;
+          > div {
+            backface-visibility: hidden;
+            position: absolute;
+            height: 100%;
+            width: auto;
+          }
+          .line {
+            background-color: $white;
+            border: 1px solid $cod-gray;
+            padding: 5px 15px;
+          }
+          .sfx-block {
+            border: 1px solid $cod-gray;
+            padding: 5px 15px;
+            transform: rotateX(-90deg);
+          }
+        }
+      }
+    }
+  }
+}
