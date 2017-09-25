@@ -2,7 +2,6 @@ import { TweenMax, TimelineMax } from 'gsap';
 
 import {
   addClass,
-  removeClass,
   wrap
 } from 'common_';
 
