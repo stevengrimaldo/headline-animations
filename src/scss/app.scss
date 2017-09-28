@@ -52,6 +52,9 @@
       .block-wrapper {
         position: relative;
         perspective: 1000px;
+        &:first-of-type {
+          z-index: 10;
+        }
         .line-wrapper {
           color: $cod-gray;
           margin: 5px 0;
@@ -77,6 +80,17 @@
             padding: 5px 15px;
             transform: rotateX(-90deg);
           }
+        }
+      }
+    }
+
+    &--reveal {
+      .line-wrapper {
+        color: $cod-gray;
+        margin: 5px 0;
+        display: inline-block;
+        .line {
+          padding: 5px 15px;
         }
       }
     }
